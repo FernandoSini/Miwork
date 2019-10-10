@@ -5,6 +5,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 
@@ -28,13 +30,24 @@ public class WordAdapter extends ArrayAdapter<Word> {
         //pegando a objeto palavra na posição
         Word currentWord = getItem(position);
 
-        android.widget.TextView miwokTextView = (android.widget.TextView) listItemView.findViewById(R.id.miwok_text_view);
+        TextView miwokTextView = (TextView) listItemView.findViewById(R.id.miwok_text_view);
 
         miwokTextView.setText(currentWord.getMiwokTranslation());
 
-        android.widget.TextView defaultTextView = (android.widget.TextView) listItemView.findViewById(R.id.default_text_view);
+        TextView defaultTextView = (TextView) listItemView.findViewById(R.id.default_text_view);
 
         defaultTextView.setText(currentWord.getDefaultTranslation());
+
+        ImageView imageView =(ImageView) listItemView.findViewById(R.id.image);
+
+        if(currentWord.hasImage()) {
+            imageView.setImageResource(currentWord.getImageResourceId());
+            //para ter certeza de que a imagem esta visivel, para serem reutilizadas
+            imageView.setVisibility(View.VISIBLE);
+        } else {
+            //caso contrario vai esconder a imageview se n tiver imagem
+            imageView.setVisibility(View.GONE);
+        }
 
         return listItemView;
     }
