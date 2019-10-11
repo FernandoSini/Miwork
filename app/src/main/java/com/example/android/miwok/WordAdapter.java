@@ -32,6 +32,7 @@ public class WordAdapter extends ArrayAdapter<Word> {
             listItemView = LayoutInflater.from(getContext()).inflate(R.layout.list_item, parent, false);
         }
 
+
         //pegando a objeto palavra na posição
         Word currentWord = getItem(position);
 

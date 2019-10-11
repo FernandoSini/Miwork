@@ -15,6 +15,7 @@ public class Word {
     private int mImageResourceId = NO_IMAGE_PROVIDED; //sem imagem
     private static final int NO_IMAGE_PROVIDED = -1;
 
+    private int mAudioResourceId;
     /**
      * Create a new Word object.
      *
@@ -22,14 +23,16 @@ public class Word {
      *                           (such as English)
      * @param miwokTranslation is the word in the Miwok language
      */
-    public Word(String defaultTranslation, String miwokTranslation) {
+    public Word(String defaultTranslation, String miwokTranslation,  int audioResourceId) {
         mDefaultTranslation = defaultTranslation;
         mMiwokTranslation = miwokTranslation;
+        mAudioResourceId = audioResourceId;
     }
-    public Word(String defaultTranslation, String miwokTranslation, int imageResourceId) {
+    public Word(String defaultTranslation, String miwokTranslation, int imageResourceId, int audioResourceId) {
         mDefaultTranslation = defaultTranslation;
         mMiwokTranslation = miwokTranslation;
         mImageResourceId = imageResourceId;
+        mAudioResourceId = audioResourceId;
     }
     /**
      * Get the default translation of the word.
@@ -52,5 +55,10 @@ public class Word {
     //retorna quando tem imagem ou não
     public boolean hasImage() {
         return mImageResourceId != NO_IMAGE_PROVIDED; //se houver imagem, vai retornar true
+    }
+
+    //id do arquivo de audio
+    public int getmAudioResourceId() {
+        return mAudioResourceId;
     }
 }
